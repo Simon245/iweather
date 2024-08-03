@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title>iWeather</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,6 +16,30 @@
         </div>
         <h3 class="desc">{{weather.condition.text}}</h3>
         <h1 class="temp">{{weather.temp_c}}&deg;C</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item
+            ><strong>Temp: &nbsp;</strong>{{weather.temp_c}}&deg;C</ion-item
+          >
+          <ion-item
+            ><strong>Relative Humidity: &nbsp;</strong
+            >{{weather.humidity}}%</ion-item
+          >
+          <ion-item
+            ><strong>Dewpoint: &nbsp;</strong
+            >{{weather.dewpoint_c}}&deg;C</ion-item
+          >
+          <ion-item
+            ><strong>Visibility: &nbsp;</strong>{{weather.vis_km}}km</ion-item
+          >
+          <ion-item
+            ><strong>Heat Index: &nbsp;</strong
+            >{{weather.heatindex_c}}&deg;C</ion-item
+          >
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>
