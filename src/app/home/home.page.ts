@@ -21,12 +21,7 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.storageService.get('location').then((val: string) => {
-      if (val !== null) {
-        this.currentLocation = val;
-      } else {
-        this.currentLocation = 'Germany';
-      }
-      this.currentLocation = val;
+      this.currentLocation = val ? val : 'Germany';
 
       this.weatherService
         .getWeather(this.currentLocation)

@@ -7,7 +7,7 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage {
-  currentLocation = 'ddd';
+  currentLocation = '';
   constructor(private storageService: StorageService) {
     this.storageService.get('location').then((val: string) => {
       if (val !== null) {

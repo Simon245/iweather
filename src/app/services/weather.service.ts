@@ -11,12 +11,6 @@ export class WeatherService {
   constructor(private http: HttpClient) {}
 
   getWeather(city: string) {
-    if (!environment.production) {
-      // @ts-ignore
-      const weather: any = JSON.parse(localStorage.getItem('weather'));
-      return of(weather);
-    } else {
-      return this.http.get(`${this.url}&q=${city}`).pipe(map((res) => res));
-    }
+    return this.http.get(`${this.url}&q=${city}`).pipe(map((res) => res));
   }
 }
