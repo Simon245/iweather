@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class WeatherService {
-  url: string = `http://api.weatherapi.com/v1/current.json?key=${environment.apiKey}`;
+  url: string = `https://api.weatherapi.com/v1/current.json?key=${environment.apiKey}`;
   constructor(private http: HttpClient) {}
 
   getWeather(city: string) {
