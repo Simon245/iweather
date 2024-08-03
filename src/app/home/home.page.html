@@ -5,6 +5,18 @@
 </ion-header>
 
 <ion-content color="primary" class="ion-padding" [fullscreen]="true">
-  <h1>Home Page</h1>
-  <p>This component works</p>
+  <ion-grid *ngIf="!isEmptyObject(weatherLocation)">
+    <ion-row>
+      <ion-col offset>
+        <h2 class="location">
+          {{weatherLocation.name}}, {{weatherLocation.region}}
+        </h2>
+        <div class="icon">
+          <img [src]="getIconUrl()" alt="" />
+        </div>
+        <h3 class="desc">{{weather.condition.text}}</h3>
+        <h1 class="temp">{{weather.temp_c}}&deg;C</h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
