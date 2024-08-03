@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Weather } from 'src/app/models/Weather';
 import { WeatherLocation } from 'src/app/models/WeatherLocation';
+import { StorageService } from 'src/app/services/storage.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
@@ -12,17 +13,28 @@ export class HomePage {
   currentLocation: string = '';
   weather = {} as Weather;
   weatherLocation = {} as WeatherLocation;
-  constructor(private weatherService: WeatherService) {}
+
+  constructor(
+    private weatherService: WeatherService,
+    private storageService: StorageService,
+  ) {}
 
   ionViewWillEnter() {
-    this.currentLocation = 'Germany';
-    this.weatherService
-      .getWeather(this.currentLocation)
-      .subscribe((response: any) => {
-        console.log(response);
-        this.weather = response.current;
-        this.weatherLocation = response.location;
-      });
+    this.storageService.get('location').then((val: string) => {
+      if (val !== null) {
+        this.currentLocation = val;
+      } else {
+        this.currentLocation = 'Germany';
+      }
+      this.currentLocation = val;
+
+      this.weatherService
+        .getWeather(this.currentLocation)
+        .subscribe((response: any) => {
+          this.weather = response.current;
+          this.weatherLocation = response.location;
+        });
+    });
   }
 
   getIconUrl(): string {

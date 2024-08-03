@@ -4,7 +4,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <h1>Settings Page</h1>
-  <p>This component works</p>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <form (ngSubmit)="saveForm()">
+            <ion-item>
+              <ion-item>
+                <ion-input
+                  label="Location"
+                  [(ngModel)]="currentLocation"
+                  [ngModelOptions]="{standalone: true}"
+                ></ion-input>
+              </ion-item>
+            </ion-item>
+            <ion-button type="submit" expand="full">Save Changes</ion-button>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
